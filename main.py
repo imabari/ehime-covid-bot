@@ -99,3 +99,5 @@ for i in soup.select("div#tmp_contents > ul > li > a"):
 
                 api = tweepy.API(auth)
                 api.update_with_media(status=twit, filename=str(png_file))
+                
+            break
