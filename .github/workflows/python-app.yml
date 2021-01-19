@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [on-demand-test]
   schedule:
-    - cron:  '30 6 * * *'
+    - cron:  '0 7 * * *'
 
 jobs:
   build:
