@@ -87,7 +87,10 @@ for i in soup.select("div#tmp_contents > ul > li > a"):
 
                 s = m.group(0).replace(" ", "")
 
-                twit = f"新型コロナウイルスの感染の確認について\n{s}\n{link}\n\n#愛媛県 #新型コロナ"
+                mi = re.search("今治市 *?: *?(\d+)名", text)
+                imabari = f"うち今治市の新型コロナウイルスの感染者は{mi.group(1)}名です。\n" if mi else ""
+
+                twit = f"新型コロナウイルスの感染の確認について\n{s}\n{imabari}感染された方々の一日も早いご回復を心よりお祈り申し上げます。\n{link}\n\n#愛媛県 #今治市 #新型コロナ"
 
                 consumer_key = os.environ["CONSUMER_KEY"]
                 consumer_secret = os.environ["CONSUMER_SECRET"]
