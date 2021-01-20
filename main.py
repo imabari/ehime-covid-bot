@@ -44,7 +44,7 @@ dt_now = datetime.datetime.now(JST).date()
 
 soup = fetch_soup(url)
 
-for i in soup.select("div#tmp_contents > ul > li > a"):
+for i in soup.select("div#tmp_contents > ul > li > a")[:10]:
 
     title = i.get_text(strip=True)
 
@@ -104,3 +104,5 @@ for i in soup.select("div#tmp_contents > ul > li > a"):
                 api.update_with_media(status=twit, filename=str(png_file))
                 
             break
+else:
+    print("見つかりません")
