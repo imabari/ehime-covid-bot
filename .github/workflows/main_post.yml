@@ -7,7 +7,7 @@ on:
   repository_dispatch:
     types: [on-demand-post]
   schedule:
-    - cron:  '0 12 * * *'
+    - cron:  '0 9 * * *'
 
 jobs:
   build:
@@ -16,10 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python 3.9
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
+        python-version: 3.9
     - name: Get pip cache dir
       id: pip-cache
       run: |
