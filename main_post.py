@@ -21,7 +21,7 @@ def fetch_file(url, dir="."):
 
     return p
 
-p = fetch_file("https://www.pref.ehime.jp/h25500/kansen/documents/kennai_link.pdf")
+p = fetch_file("https://www.pref.ehime.jp/h25500/kansen/documents/kennai_link.pdf", "data")
 
 pdf = pdfplumber.open(p)
 
