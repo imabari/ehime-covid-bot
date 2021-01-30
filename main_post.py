@@ -1,4 +1,5 @@
 import os
+import csv
 import datetime
 import pathlib
 import re
@@ -19,9 +20,6 @@ def fetch_file(url, dir="."):
         fw.write(r.content)
 
     return p
-
-# GASのウェブアプリのURLを登録
-GAS_WEBAPPS = os.environ["WEBAPPS"]
 
 p = fetch_file("https://www.pref.ehime.jp/h25500/kansen/documents/kennai_link.pdf")
 
@@ -58,8 +56,16 @@ for page in pdf.pages[::-1]:
                 print("入院中の合計が違います")
             elif data[0] != data[1] + data[6] + data[7] + data[8]:
                 print("感染者累計が違います")
+            
+            result = [dt_date.isoformat()] + data
 
-            url = GAS_WEBAPPS
+            p_csv = pathlib.Path("data", "latest.csv")
+
+            with p_csv.open(mode="w") as fw:
+                writer = csv.writer(fw, dialect="excel", lineterminator="\n")
+                writer.writerow(result)
+
+            url = os.environ["WEBAPPS"]
             headers = {"Content-Type": "application/json"}
 
             json_data = json.dumps({"data": [dt_date.isoformat()] + data})
