@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f req_main_twit.txt ]; then pip install -r req_main_twit.txt; fi
+        # if [ -f req_main_twit.txt ]; then pip install -r req_main_twit.txt; fi
     - name: Run script
       run: |
         python main_twit.py
