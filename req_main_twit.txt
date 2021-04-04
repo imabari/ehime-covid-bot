@@ -1,4 +1,4 @@
 beautifulsoup4
-python-pdfbox
+python-pdfbox==0.1.8.1
 requests
 tweepy
