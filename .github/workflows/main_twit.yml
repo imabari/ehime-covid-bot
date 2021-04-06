@@ -3,8 +3,6 @@ name: Twitter Post
 on:
   repository_dispatch:
     types: [on-demand-twit]
-  schedule:
-    - cron:  '0 7 * * *'
 
 jobs:
   build:
